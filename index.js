@@ -27,6 +27,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // Middleware: Allow Express to parse JSON request bodies
 app.use(express.json());
 
+// Import and Use Contacts Routes
+const contactsRoutes = require("./routes/contacts");
+app.use("/contacts", contactsRoutes);
+
+// Basic route
 app.get("/", (req, res) => {
     res.send("Hello World");
 });
