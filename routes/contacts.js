@@ -6,8 +6,10 @@ const Contact = require("../models/contact"); // Import Contact model (which we'
 router.get("/", async (req, res) => {
     try {
         const contacts = await Contact.find();
+        console.log("Contacts fetched:", contacts); // Debugging log
         res.json(contacts);
     } catch (err) {
+        console.error(err);
         res.status(500).json({ message: "Error retrieving contacts" });
     }
 });
