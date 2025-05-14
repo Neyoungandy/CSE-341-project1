@@ -1,7 +1,7 @@
-require("dotenv").config(); // Load .env file first
+require("dotenv").config(); // Load environment variables
 
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // Using Mongoose (Recommended)
 
 const app = express();
 
@@ -13,16 +13,12 @@ if (!process.env.MONGO_URI) {
     process.exit(1);
 }
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log("MongoDB Connected"))
-.catch(err => {
-    console.error("MongoDB connection error:", err);
-    process.exit(1);
-});
+// Connect to MongoDB (Using Mongoose)
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Connected"))
+    .catch((err) => {
+        console.error("❌ MongoDB connection error:", err);
+    });
 
 // Middleware: Allow Express to parse JSON request bodies
 app.use(express.json());
@@ -31,7 +27,7 @@ app.use(express.json());
 const contactsRoutes = require("./routes/contacts");
 app.use("/contacts", contactsRoutes);
 
-// Basic route
+// Basic route to confirm the server is running
 app.get("/", (req, res) => {
     res.send("Hello World");
 });
@@ -39,5 +35,5 @@ app.get("/", (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🌍 Server running on port ${PORT}`);
 });
