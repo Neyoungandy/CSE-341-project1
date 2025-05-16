@@ -2,6 +2,8 @@ require("dotenv").config(); // Load environment variables
 
 const express = require("express");
 const mongoose = require("mongoose"); // Using Mongoose (Recommended)
+const swaggerUi = require("swagger-ui-express"); // Swagger UI
+const swaggerDocument = require("./swagger/swagger.json"); // Import Swagger Docs
 
 const app = express();
 
@@ -22,6 +24,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Middleware: Allow Express to parse JSON request bodies
 app.use(express.json());
+
+// 📌 Add Swagger API Documentation Route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
 
 // Import and Use Contacts Routes
 const contactsRoutes = require("./routes/contacts");
