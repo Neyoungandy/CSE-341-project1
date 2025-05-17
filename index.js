@@ -16,18 +16,22 @@ if (!process.env.MONGO_URI) {
     process.exit(1);
 }
 
+// 🚀 Enable CORS to allow external requests (IMPORTANT for Render!)
+app.use(cors({
+    origin: "*", // Allow requests from anywhere
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow API methods
+    allowedHeaders: ["Content-Type", "Authorization"] // Allow necessary headers
+}));
+
+// Middleware: Allow Express to parse JSON request bodies
+app.use(express.json());
+
 // Connect to MongoDB (Using Mongoose)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ MongoDB Connected"))
     .catch((err) => {
         console.error("❌ MongoDB connection error:", err);
     });
-
-// Middleware: Allow Express to parse JSON request bodies
-app.use(express.json());
-
-// 🚀 Enable CORS to allow external requests (IMPORTANT for Render!)
-app.use(cors());
 
 // 📌 Add Swagger API Documentation Route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
