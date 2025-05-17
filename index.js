@@ -2,6 +2,7 @@ require("dotenv").config(); // Load environment variables
 
 const express = require("express");
 const mongoose = require("mongoose"); // Using Mongoose (Recommended)
+const cors = require("cors"); // Import CORS middleware
 const swaggerUi = require("swagger-ui-express"); // Swagger UI
 const swaggerDocument = require("./swagger/swagger.json"); // Import Swagger Docs
 
@@ -24,6 +25,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Middleware: Allow Express to parse JSON request bodies
 app.use(express.json());
+
+// 🚀 Enable CORS to allow external requests (IMPORTANT for Render!)
+app.use(cors());
 
 // 📌 Add Swagger API Documentation Route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
