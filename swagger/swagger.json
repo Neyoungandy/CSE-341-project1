@@ -5,17 +5,8 @@
     "description": "API for managing contacts stored in MongoDB",
     "version": "1.0.0"
   },
-  "schemes": ["http", "https"],
-  "x-servers": [
-    {
-      "url": "http://localhost:3000",
-      "description": "Local server"
-    },
-    {
-      "url": "cse-341-project1-zwy8.onrender.com",
-      "description": "Production server (Render)"
-    }
-  ],
+  "host": "cse-341-project1-zwy8.onrender.com",
+  "schemes": ["https"],
   "paths": {
     "/contacts": {
       "get": {
