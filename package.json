@@ -21,12 +21,15 @@
   },
   "homepage": "https://github.com/Neyoungandy/CSE-341-project1#readme",
   "dependencies": {
+    "-": "^0.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.2",
+    "swagger": "^0.7.5",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "ui-": "^1.0.0"
   }
 }

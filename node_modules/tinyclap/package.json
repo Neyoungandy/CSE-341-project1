@@ -1,0 +1,25 @@
+{
+  "name": "tinyclap",
+  "version": "1.0.1",
+  "description": "a tiny command line arguments parser for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexbinary/tinyclap.git"
+  },
+  "keywords": [
+    "command",
+    "line",
+    "arguments",
+    "parser"
+  ],
+  "author": "Alexandre Bintz <alexandre.bintz@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexbinary/tinyclap/issues"
+  },
+  "homepage": "https://github.com/alexbinary/tinyclap"
+}
